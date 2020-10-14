@@ -2,7 +2,7 @@ import cv2
 import os
 
 
-COUNT_OF_FILES = 10
+COUNT_OF_FILES = 5
 COUNT_OF_FRAMES = 1000
 COUNT_OF_ATTEMPTS = 3
 
@@ -36,7 +36,7 @@ def _open_video(ip_camera):
     print('Открываем видео поток ...')
     cap = cv2.VideoCapture(ip_camera)
     attempt = 0
-    while (attempt < COUNT_OF_ATTEMPTS or not cap.isOpened()):
+    while (attempt < COUNT_OF_ATTEMPTS and not cap.isOpened()):
         attempt += 1
         cap = cv2.VideoCapture(ip_camera)
         if not cap.isOpened():
