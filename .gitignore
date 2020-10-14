@@ -4,3 +4,6 @@ ping.py
 src/cat.jpg
 src/dance.mp4
 src/video.mkv
+*.avi
+.vscode
+__pycache__

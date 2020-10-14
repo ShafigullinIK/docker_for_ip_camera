@@ -7,5 +7,7 @@ RUN conda install -c conda-forge opencv
 
 RUN apt update && apt install -y libgl1-mesa-glx
 
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
+RUN mkdir -p /bus
+WORKDIR /bus
+
+CMD [ "python", "/bus/camera/app.py" ]

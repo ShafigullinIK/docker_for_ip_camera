@@ -12,7 +12,7 @@ def video_func(ip_camera):
     # out = cv2.VideoWriter('output.avi', fourcc, 24.0, (fwidth, fheight))
     while(cap.isOpened()):
         ret, frame = cap.read()
-        if ret:    
+        if ret:
             cv2.imshow("bus", frame)
         else:
             break
