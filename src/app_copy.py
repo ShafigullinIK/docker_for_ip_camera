@@ -17,7 +17,7 @@ def video_func(ip_camera):
         fourcc = cv2.VideoWriter_fourcc(*'XVID')
         file_number = _get_max_file_number()
         for i in range(COUNT_OF_FILES):
-            out = cv2.VideoWriter(f'{file_number + i}.avi', fourcc, 24.0, (fwidth, fheight))
+            out = cv2.VideoWriter(f'/bus/camera/{file_number + i}.avi', fourcc, 24.0, (fwidth, fheight))
             print(f'Пишем видео в файл {file_number + i}.avi ....')
             counter = 0
             while(cap.isOpened() and counter < COUNT_OF_FRAMES):
