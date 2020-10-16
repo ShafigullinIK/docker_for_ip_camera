@@ -1,9 +1,9 @@
 import cv2
 import os
-
+import inference_resnet18
 
 COUNT_OF_FILES = 5
-COUNT_OF_FRAMES = 1000
+COUNT_OF_FRAMES = 40
 COUNT_OF_ATTEMPTS = 3
 
 
@@ -22,8 +22,13 @@ def video_func(ip_camera):
             counter = 0
             while(cap.isOpened() and counter < COUNT_OF_FRAMES):
                 counter += 1
+                print(counter)
                 ret, frame = cap.read()
                 if ret:
+                    if model.predict(_crop(frame)) == 'open':
+                        frame = cv2.rectangle(frame, (0, 340), (570, 700), (255, 0, 0))
+                    else:
+                        frame = cv2.rectangle(frame, (0, 340), (570, 700), (0, 255, 0))
                     out.write(frame)
                 else:
                     break
@@ -55,3 +60,10 @@ def _get_max_file_number():
         if filename.endswith(".avi"):
             max_number = max(int(filename.split('.')[0]), max_number)
     return max_number + 1
+
+
+def _crop(img):
+    return img[340:570, 0:700]
+
+
+model = inference_resnet18.Predict(0.5, '../app/model_2.pth')

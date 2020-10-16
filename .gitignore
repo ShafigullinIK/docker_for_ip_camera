@@ -7,3 +7,6 @@ src/video.mkv
 *.avi
 .vscode
 __pycache__
+*.pth
+frames/
+*.jpg
